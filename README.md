@@ -1,26 +1,77 @@
-# DYSTOPIC 2067 — AI-Assisted Python Engineering Showcase
+# DYSTOPIC 2067
+### AI-Powered Narrative & Multimedia Production Platform
 
-> **Independent reference implementation.** This repository demonstrates engineering concepts used in a larger privately developed narrative production platform. It does **not** contain or reproduce the production engine, prompts, world canon, API credentials, datasets, or customer data.
+**Python Engineering | Multi-Agent AI Orchestration | Persistent State Management | Automated Multimedia Production**
 
-## What this demonstrates
+DYSTOPIC 2067 is an independently developed, modular AI-powered platform designed to orchestrate complex narrative generation and multimedia production workflows.
 
-- **Modular orchestration:** Director → Writer → Judge → validated commit
-- **Dependency inversion:** a `Writer` protocol allows deterministic offline execution or a separately implemented LLM adapter
-- **Continuity validation:** an explicit set of verified facts; conflicting assertions are rejected
-- **Thread lifecycle:** active, dormant, resolved; resolution requires linked evidence
-- **Persistence:** accepted scenes are written to JSON using atomic file replacement
-- **Testing:** built-in `unittest`, including rejection paths and state integrity
+The platform combines multiple AI-driven components with deterministic software engineering principles to coordinate story planning, narrative generation, continuity validation, persistent world states, image generation, and audiobook production.
 
-## Run locally
+Its architecture is designed for extensibility, maintainability, and reuse across different fictional worlds and narrative genres.
 
-Requires Python 3.10+; no packages, accounts, or API keys required.
+## Core Architecture
+
+The production platform integrates several interconnected systems:
+
+| Component | Responsibility |
+|---|---|
+| Narrative Director | Story planning, scene objectives, narrative progression, and pacing |
+| Narrative Writer | AI-assisted scene and dialogue generation |
+| Narrative Judge | Continuity validation, consistency checks, and quality control |
+| Micro Repair Pipeline | Targeted identification and correction of narrative inconsistencies |
+| Character & World State | Persistent character attributes, relationships, events, and environmental conditions |
+| Thread Management | Narrative thread tracking, lifecycle management, and resolution |
+| Persistence Layer | Structured storage, state recovery, and story continuity |
+| Image Generation | Integration of local and API-based image generation workflows |
+| Editorial Processing | AI-assisted text review and preparation |
+| Audio Production | Text segmentation, voice synthesis, character voice profiles, and sound-effect preparation |
+
+The narrative engine follows a world-agnostic design, separating reusable core functionality from individual fictional settings.
+
+## AI-Assisted Software Engineering
+
+Development combines AI-assisted programming with human-directed software architecture, debugging, integration, testing, and quality assurance.
+
+Key engineering practices include:
+
+- Modular Python application design
+- Multi-model AI orchestration
+- Structured data validation
+- State and lifecycle management
+- Persistent data handling
+- Dependency abstraction
+- Automated regression testing
+- Error analysis and recovery strategies
+- Git-based version control
+- Iterative development and code review
+
+## Executable Python Implementation
+
+This repository includes an independent, executable Python reference implementation demonstrating selected architectural concepts used throughout the larger platform.
+
+The implementation contains:
+
+- `engine.py` — Narrative orchestration, validation, thread management, and persistence
+- `demo.py` — Executable demonstration of accepted and rejected scenes
+- `tests/test_engine.py` — Automated unit tests for validation, lifecycle behavior, and state integrity
+
+### Requirements
+
+Python 3.10 or newer. No external packages or API credentials are required.
+
+### Run the demonstration
 
 ```bash
 python demo.py
+```
+
+### Run automated tests
+
+```bash
 python -m unittest discover -s tests -v
 ```
 
-Expected demo output:
+### Expected demonstration output
 
 ```text
 Scene 1: ACCEPTED
@@ -29,29 +80,49 @@ Scene 3: REJECTED — required continuity fact missing, unverified fact asserted
 Persisted scenes: 2
 ```
 
-## Architecture
+The example demonstrates controlled state transitions and validation before persistence. Rejected scenes do not modify the accepted story history.
+
+## Architecture Overview
 
 ```text
-Director ── ScenePlan ──> Writer (protocol)
-                              │
-                          SceneDraft
-                              │
-                       Judge + known facts
-                              │
-                     accepted? ── no ──> reject without state mutation
-                         │ yes
-                         v
-                 Thread evidence + JSON store
+                 Narrative Director
+                         |
+                     Scene Plan
+                         |
+                    Writer Interface
+                         |
+                     Scene Draft
+                         |
+                 Judge / Validation
+                         |
+               +---------+---------+
+               |                   |
+            Rejected             Accepted
+               |                   |
+         No State Change      Thread Evidence
+                                   |
+                             State Persistence
 ```
 
-## Suggested live interview exercise
+## Development and Collaboration
 
-Implement a new review rule or add a lifecycle transition test with an AI coding assistant. Explain the proposed change, inspect its side effects, run regression tests, and commit the smallest verified change.
+DYSTOPIC 2067 provides a practical environment for AI-assisted software development, architectural evaluation, debugging, and collaborative code review.
 
-## Engineering scope and limitations
+The public implementation supports independent execution, modification, testing, and extension without requiring access to private infrastructure or external AI services.
 
-This is intentionally **not** a production-ready LLM story generator. The offline writer is deterministic; the Judge checks declared facts rather than performing semantic natural-language verification. The JSON store is suitable for a local demo, not concurrent multi-process writes or transactional persistence. There is no automatic repair, authentication, API integration, or production recovery subsystem in this example.
+The full production platform is maintained separately. This repository provides a self-contained technical implementation suitable for engineering evaluation and collaborative development.
 
-## Intellectual property
+## Additional Documentation
 
-Copyright (c) 2026 Dystenia. All rights reserved. No license to reuse, redistribute, or commercially exploit the source is granted by default. Public visibility is not an open-source license. Contact the repository owner to discuss permission or confidential technical review.
+- [Architecture Overview](ARCHITECTURE.md)
+- [AI Development Workflow](AI_DEVELOPMENT_WORKFLOW.md)
+
+## License
+
+This repository's original source code is made available under the **MIT License**.
+
+Copyright (c) 2026 Dystenia.
+
+See the [LICENSE](LICENSE) file for the complete license terms.
+
+The separately maintained DYSTOPIC 2067 production platform, its proprietary source code, datasets, world canon, prompts, and associated assets are not included in this repository and are not covered by this repository's MIT License.
